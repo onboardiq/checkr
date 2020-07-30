@@ -12,6 +12,8 @@ require "checkr/terrorist_watchlist_search"
 require "checkr/global_watchlist_search"
 require "checkr/national_criminal_search"
 require "checkr/county_criminal_search"
+require "checkr/education_verification"
+require "checkr/employment_verification"
 require "checkr/report_charge"
 require "checkr/report_record"
 

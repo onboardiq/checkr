@@ -7,6 +7,19 @@ module Checkr
         uri = "/subaccounts/#{params[:subaccount_id]}" unless params[:subaccount_id].nil?
         uri = "#{uri}/candidates"
         response = self.post(uri, :body => params, :basic_auth => Checkr.auth(api_key) )
+
+        if params[:employers].present?
+          params[:employers].each do |employer|
+            res = self.post("https://api.checkr.com/v1/candidates/#{response['id']}/employers", :body => employer, :basic_auth => Checkr.auth(api_key))
+            handle_response(res)
+          end
+        end
+
+        if params[:school].present?
+          res = self.post("https://api.checkr.com/v1/candidates/#{response['id']}/schools", :body => params[:school], :basic_auth => Checkr.auth(api_key))
+          handle_response(res)
+        end
+
         handle_response(response)
       end
     end
