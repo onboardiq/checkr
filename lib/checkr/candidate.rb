@@ -10,13 +10,13 @@ module Checkr
 
         if params[:employers].present?
           params[:employers].each do |employer|
-            res = self.post("https://api.checkr.com/v1/candidates/#{response['id']}/employers", :body => employer, :basic_auth => Checkr.auth(api_key))
+            res = self.post("https://api.checkrhq-staging.net/v1/candidates/#{response['id']}/employers", :body => employer, :basic_auth => Checkr.auth(api_key))
             handle_response(res)
           end
         end
 
         if params[:school].present?
-          res = self.post("https://api.checkr.com/v1/candidates/#{response['id']}/schools", :body => params[:school], :basic_auth => Checkr.auth(api_key))
+          res = self.post("https://api.checkrhq-staging.net/v1/candidates/#{response['id']}/schools", :body => params[:school], :basic_auth => Checkr.auth(api_key))
           handle_response(res)
         end
 
